@@ -115,7 +115,10 @@ export default function Home() {
 
 
       if (metarData.clouds && metarData.clouds.length) {
-      
+               
+         
+        // disable eslint for the next line because it's a hack to get the first layer of clouds
+        // eslint-disable-next-line
         const ceilingLayer = metarData.clouds.find((cloud: any) =>
           ["OVC", "BKN"].includes(cloud.cover)
         );
@@ -131,6 +134,8 @@ export default function Home() {
 
       let ceiling = Infinity;
       if (metarData.clouds && metarData.clouds.length) {
+        // disable eslint for the next line because it's a hack to get the first layer of clouds
+        // eslint-disable-next-line
         const ceilingLayer = metarData.clouds.find((cloud: any) =>
           ["OVC", "BKN"].includes(cloud.cover)
         );
