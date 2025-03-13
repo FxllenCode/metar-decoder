@@ -44,17 +44,11 @@ export default function Home() {
     setFlightCategory(null);
 
     try {
-      const isDevelopment = process.env.NODE_ENV === 'development';
-
-      let requestUrl;
-      if (isDevelopment) {
-        const corsProxyUrl = "https://corsproxy.io/?";
-        requestUrl = corsProxyUrl + encodeURIComponent(
-          `https://aviationweather.gov/api/data/metar?ids=${airport.toUpperCase()}&format=json`
-        );
-      } else {
-        requestUrl = `https://aviationweather.gov/api/data/metar?ids=${airport.toUpperCase()}&format=json`;
-      }
+      // Always use the CORS proxy regardless of environment
+      const corsProxyUrl = "https://corsproxy.io/?";
+      const requestUrl = corsProxyUrl + encodeURIComponent(
+        `https://aviationweather.gov/api/data/metar?ids=${airport.toUpperCase()}&format=json`
+      );
 
       const response = await fetch(requestUrl);
 
